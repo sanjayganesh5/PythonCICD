@@ -18,24 +18,20 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- script: |
-    unset SONARQUBE_SCANNER_PARAMS
-    echo "Ensured sonar.branch.name is NOT set"
-  displayName: 'Unset unwanted SonarQube properties'
-
 - task: SonarQubePrepare@7
   inputs:
     SonarQube: 'SonarQube-Linode'
     scannerMode: 'cli'
     configMode: 'manual'
     cliProjectKey: 'Python-CICD_Python-CICD_cc16046b-be76-48e7-ac17-5c12a13520e7'
-    cliProjectName: 'Python-CICD-main'
-    cliProjectVersion: '1.0'
+    cliProjectName: 'Python-CICD'
     cliSources: '.'
     extraProperties: |
       sonar.sourceEncoding=UTF-8
 
 - task: SonarQubeAnalyze@7
+  env:
+    SONAR_SCANNER_OPTS: "-Dsonar.log.level=DEBUG"  # Enable detailed logs
   inputs:
     jdkversion: 'JAVA_HOME_17_X64'
 
