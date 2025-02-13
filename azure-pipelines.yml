@@ -10,16 +10,19 @@ pool:
   name: Default
 
 steps:
-- script: echo Hello, world! $(Agent.TempDirectory)
-  displayName: 'Run a one-line script'
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.12'
+    addToPath: true
+    architecture: 'x64'
+
+- script: pip install coverage
+  displayName: 'Install Dependencies'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-
-- script: rm -rf /home/killar/.sonar/cache
-  displayName: 'Clear SonarQube Cache'
+    coverage run -m unittest discover tests/
+    coverage xml -o coverage-reports/python_cicd_coverage.xml
+  displayName: 'Run Tests with Coverage'
 
 - task: SonarCloudPrepare@3
   inputs:
