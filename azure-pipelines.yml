@@ -17,3 +17,20 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+- task: SonarQubePrepare@7
+  inputs:
+    SonarQube: 'SonarQube-Linode'
+    scannerMode: 'cli'
+    configMode: 'manual'
+    cliProjectKey: 'Python-CICD_Python-CICD_cc16046b-be76-48e7-ac17-5c12a13520e7'
+    cliProjectName: 'Python-CICD'
+    cliSources: '.'
+
+- task: SonarQubeAnalyze@7
+  inputs:
+    jdkversion: 'JAVA_HOME_17_X64'
+
+- task: SonarQubePublish@7
+  inputs:
+    pollingTimeoutSec: '100'
