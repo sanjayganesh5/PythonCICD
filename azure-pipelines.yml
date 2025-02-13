@@ -14,8 +14,8 @@ steps:
   displayName: 'Install Dependencies'
 
 - script: |
-    coverage run -m unittest discover tests/
-    coverage xml -o coverage-reports/python_cicd_coverage.xml
+    python3 -m coverage run -m unittest discover tests/
+    python3 -m coverage xml -o coverage-reports/python_cicd_coverage.xml
   displayName: 'Run Tests with Coverage'
 
 - task: SonarCloudPrepare@3
