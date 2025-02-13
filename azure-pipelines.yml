@@ -18,6 +18,15 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
+- script: |
+    rm -rf $(Agent.WorkFolder)/_tasks/SonarQubeAnalyze*
+  displayName: 'Clear SonarQube Scanner Cache'
+
+- script: |
+    unset SONARQUBE_SCANNER_PARAMS
+    echo "Ensured sonar.branch.name is NOT set"
+  displayName: 'Unset unwanted SonarQube properties'
+
 - task: SonarQubePrepare@7
   inputs:
     SonarQube: 'SonarQube-Linode'
