@@ -31,6 +31,7 @@ steps:
     cliSources: '.'
     extraProperties: |
       sonar.sourceEncoding=UTF-8
+      sonar.custom.branch=main
 
 - task: SonarQubeAnalyze@7
   env:
