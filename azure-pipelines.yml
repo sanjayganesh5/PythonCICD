@@ -26,7 +26,7 @@ steps:
     configMode: 'manual'
     cliProjectKey: 'azure-devops-sonar-5_python-cicd'
     cliProjectName: 'Python-CICD'
-    cliSources: './src'
+    cliSources: '.'
 
 - task: SonarCloudAnalyze@3
   inputs:
