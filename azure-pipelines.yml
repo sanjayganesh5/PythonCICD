@@ -10,13 +10,16 @@ pool:
   name: Default
 
 steps:
-- script: echo Hello, world! $(Build.SourceBranch)
+- script: echo Hello, world! $(Agent.TempDirectory)
   displayName: 'Run a one-line script'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+- script: rm -rf $(Agent.TempDirectory)/.sonar
+  displayName: 'Clear SonarQube Cache'
 
 - task: SonarQubePrepare@7
   inputs:
