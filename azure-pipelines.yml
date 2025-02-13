@@ -33,6 +33,9 @@ steps:
       sonar.sourceEncoding=UTF-8
       sonar.branch.name=main
 
+- script: which sonar-scanner
+  displayName: 'Check Sonar Scanner Path'
+
 - task: SonarQubeAnalyze@7
   env:
     SONAR_SCANNER_OPTS: "-Dsonar.log.level=DEBUG"  # Enable detailed logs
