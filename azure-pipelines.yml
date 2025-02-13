@@ -10,7 +10,7 @@ pool:
   name: Default
 
 steps:
-- script: echo Hello, world!
+- script: echo Hello, world! $(Build.SourceBranch)
   displayName: 'Run a one-line script'
 
 - script: |
@@ -25,7 +25,11 @@ steps:
     configMode: 'manual'
     cliProjectKey: 'Python-CICD_Python-CICD_cc16046b-be76-48e7-ac17-5c12a13520e7'
     cliProjectName: 'Python-CICD'
+    cliProjectVersion: 'branch'
     cliSources: '.'
+    extraProperties: |
+      sonar.sourceEncoding=UTF-8
+      sonar.branch.name=$(Build.SourceBranch)
 
 - task: SonarQubeAnalyze@7
   inputs:
