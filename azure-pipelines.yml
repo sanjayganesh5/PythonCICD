@@ -27,7 +27,7 @@ steps:
     organization: 'azure-devops-sonar-5'
     scannerMode: 'cli'
     configMode: 'manual'
-    cliProjectKey: 'azure-devops-sonar-5_python-cic'
+    cliProjectKey: 'azure-devops-sonar-5_python-cicd'
     cliProjectName: 'Python-CICD'
     cliSources: '.'
 
