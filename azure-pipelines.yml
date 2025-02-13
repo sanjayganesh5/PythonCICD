@@ -24,12 +24,11 @@ steps:
     scannerMode: 'cli'
     configMode: 'manual'
     cliProjectKey: 'Python-CICD_Python-CICD_cc16046b-be76-48e7-ac17-5c12a13520e7'
-    cliProjectName: 'Python-CICD'
-    cliProjectVersion: 'branch'
+    cliProjectName: 'Python-CICD-main'
+    cliProjectVersion: '1.0'
     cliSources: '.'
     extraProperties: |
       sonar.sourceEncoding=UTF-8
-      sonar.branch.name=$(Build.SourceBranch)
 
 - task: SonarQubeAnalyze@7
   inputs:
