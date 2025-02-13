@@ -27,6 +27,8 @@ steps:
     cliProjectKey: 'azure-devops-sonar-5_python-cicd'
     cliProjectName: 'Python-CICD'
     cliSources: '.'
+    extraProperties: |
+      sonar.python.version=3.12
 
 - task: SonarCloudAnalyze@3
   inputs:
