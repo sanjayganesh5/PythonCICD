@@ -21,26 +21,20 @@ steps:
 - script: rm -rf /home/killar/.sonar/cache
   displayName: 'Clear SonarQube Cache'
 
-- task: SonarQubePrepare@7
+- task: SonarCloudPrepare@3
   inputs:
-    SonarQube: 'SonarQube-Linode'
+    SonarQube: 'SonarQube Cloud'
+    organization: 'azure-devops-sonar-5'
     scannerMode: 'cli'
     configMode: 'manual'
-    cliProjectKey: 'Python-CICD_Python-CICD_cc16046b-be76-48e7-ac17-5c12a13520e7'
+    cliProjectKey: 'azure-devops-sonar-5_python-cic'
     cliProjectName: 'Python-CICD'
     cliSources: '.'
-    extraProperties: |
-      sonar.sourceEncoding=UTF-8
-      sonar.branch.name=$(Build.SourceBranchName)
-      sonar.scanner.skipSystemTruststore=true
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
 
-- task: SonarQubeAnalyze@7
-  env:
-    SONAR_SCANNER_OPTS: "-Dsonar.log.level=DEBUG"  # Enable detailed logs
+- task: SonarCloudAnalyze@3
   inputs:
     jdkversion: 'JAVA_HOME_17_X64'
 
-- task: SonarQubePublish@7
+- task: SonarCloudPublish@3
   inputs:
-    pollingTimeoutSec: '100'
+    pollingTimeoutSec: '300'
