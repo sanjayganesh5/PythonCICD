@@ -1,0 +1,27 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  - main
+
+pool:
+  name: Default
+
+steps:
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: 'Application'
+      includeRootFolder: false
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/infra.zip'
+      replaceExistingArchive: true
+    displayName: Zip source code
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'Application'
+      publishLocation: 'Container'
+    displayName: "Publish artifact"
