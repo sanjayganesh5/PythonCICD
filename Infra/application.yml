@@ -1,0 +1,10 @@
+python-cicd:
+  runtime: python3.12
+  handler: src.main.main_method
+  url: true
+  environment:
+    APP_ENV: dev
+  package:
+    artifact: ../_application/Application/app.zip
+  layers:
+    - ref: PythonCICDRequirementsLambdaLayer

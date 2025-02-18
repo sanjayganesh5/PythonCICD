@@ -1,0 +1,18 @@
+service: python-test
+provider:
+  name: aws
+  stage: dev
+  region: us-east-1
+
+plugins:
+  - serverless-python-requirements
+
+package:
+  individually: true
+
+custom:
+  pythonCICDRequirements:
+    layer: true
+
+functions:
+  - ${file(./application.yml)}
