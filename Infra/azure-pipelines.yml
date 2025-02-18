@@ -17,7 +17,7 @@ pool:
 steps:
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: 'Application'
+      rootFolderOrFile: 'Infra'
       includeRootFolder: false
       archiveType: 'zip'
       archiveFile: '$(Build.ArtifactStagingDirectory)/infra.zip'
@@ -27,6 +27,6 @@ steps:
   - task: PublishBuildArtifacts@1
     inputs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      ArtifactName: 'Application'
+      ArtifactName: 'Infra'
       publishLocation: 'Container'
     displayName: "Publish artifact"
