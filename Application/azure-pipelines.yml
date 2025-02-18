@@ -42,3 +42,20 @@ steps:
   - task: SonarCloudPublish@3
     inputs:
       pollingTimeoutSec: '300'
+    displayName: Publish sonar analysis to Sonar Cloud
+
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: 'Application'
+      includeRootFolder: true
+      archiveType: 'zip'
+      archiveFile: 'application.zip'
+      replaceExistingArchive: true
+    displayName: Zip source code
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'Application'
+      publishLocation: 'Container'
+    displayName: "Publish artifact"
