@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 print("Loading environment variables")
 load_dotenv()
 
-from Application.src.main import main_method
+from ..src.main import main_method
 
 
 class Test(TestCase):
