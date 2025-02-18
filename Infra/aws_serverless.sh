@@ -19,9 +19,6 @@ then
     exit 1
 fi
 
-# Install dependencies
-echo "Installing project dependencies..."
-npm install
 
 # Deploy application using Serverless Framework
 echo "Deploying application with Serverless..."
