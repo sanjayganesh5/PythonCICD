@@ -19,6 +19,7 @@ steps:
       python3 -m coverage run -m unittest discover tests/
       python3 -m coverage xml -o coverage-reports/python_cicd_coverage.xml
     displayName: 'Run Tests with Coverage'
+    workingDirectory: Application
 
   - task: SonarCloudPrepare@3
     inputs:
@@ -29,6 +30,8 @@ steps:
       cliProjectKey: 'azure-devops-sonar-5_python-cicd'
       cliProjectName: 'Python-CICD'
       cliSources: '.'
+      extraProperties: |
+        sonar.projectBaseDir=Application
 
   - task: SonarCloudAnalyze@3
     inputs:
