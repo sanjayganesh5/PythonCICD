@@ -25,6 +25,6 @@ npm install
 
 # Deploy application using Serverless Framework
 echo "Deploying application with Serverless..."
-sls deploy --stage "$STAGE" --region "$REGION"
+sls deploy
 
 echo "Deployment completed successfully!"
