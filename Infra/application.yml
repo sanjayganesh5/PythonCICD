@@ -5,6 +5,6 @@ python-cicd:
   environment:
     APP_ENV: dev
   package:
-    artifact: ../_application/Application/app.zip
+    artifact: ../_Application/Application/application.zip
   layers:
     - ref: PythonCICDRequirementsLambdaLayer
