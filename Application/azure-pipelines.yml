@@ -49,7 +49,7 @@ steps:
       rootFolderOrFile: 'Application'
       includeRootFolder: false
       archiveType: 'zip'
-      archiveFile: 'application.zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/application.zip'
       replaceExistingArchive: true
     displayName: Zip source code
 
