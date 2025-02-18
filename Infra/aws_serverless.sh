@@ -12,8 +12,6 @@ then
     exit 1
 fi
 
-sls --version
-
 # Verify Serverless Framework is installed
 if ! command -v sls &> /dev/null
 then
