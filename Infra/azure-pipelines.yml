@@ -25,7 +25,7 @@ steps:
         cat Infra/requirements.txt
   - task: replacetokens@6
     inputs:
-      sources: 'requirements.txt'
+      sources: 'Infra/requirements.txt'
       tokenPattern: 'doubleunderscores'
   - task: CmdLine@2
     inputs:
