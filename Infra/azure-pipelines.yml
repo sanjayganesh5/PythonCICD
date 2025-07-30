@@ -22,7 +22,7 @@ steps:
       script: |
         ls
         pwd
-        cat requirements.txt
+        cat Infra/requirements.txt
   - task: replacetokens@6
     inputs:
       sources: 'requirements.txt'
@@ -30,7 +30,7 @@ steps:
   - task: CmdLine@2
     inputs:
       script: |
-        cat requirements.txt
+        cat Infra/requirements.txt
   - task: ArchiveFiles@2
     inputs:
       rootFolderOrFile: 'Infra'
