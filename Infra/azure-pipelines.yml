@@ -17,6 +17,20 @@ pool:
   name: Default
 
 steps:
+  - task: CmdLine@2
+    inputs:
+      script: |
+        ls
+        pwd
+        cat requirements.txt
+  - task: replacetokens@6
+    inputs:
+      sources: 'requirements.txt'
+      tokenPattern: 'doubleunderscores'
+  - task: CmdLine@2
+    inputs:
+      script: |
+        cat requirements.txt
   - task: ArchiveFiles@2
     inputs:
       rootFolderOrFile: 'Infra'
